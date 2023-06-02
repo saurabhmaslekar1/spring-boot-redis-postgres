@@ -26,7 +26,17 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public ResponseEntity<Object> addStudent(Student student) {
         studentRepository.save(student);
-        return new ResponseEntity<>("Student added successfully with ID"+student.getId(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Student added successfully with ID "+student.getId(), HttpStatus.ACCEPTED);
+    }
+
+    @Override
+    public Student updateStudent(Student student, int id) {
+        Student student1=studentRepository.findById(id).orElse(null);
+        student1.setFirstName(student.getFirstName());
+        student1.setLastName(student.getLastName());
+        student1.setEmail(student.getEmail());
+        return studentRepository.save(student1);
+
     }
 
 

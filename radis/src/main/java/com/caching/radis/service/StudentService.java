@@ -11,4 +11,6 @@ public interface StudentService {
     List<Student> getStudents();
 
     ResponseEntity<Object> addStudent(Student student);
+
+    Student updateStudent(Student student, int id);
 }
